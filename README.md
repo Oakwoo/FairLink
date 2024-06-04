@@ -1,12 +1,32 @@
 # Fair Link Prediction with Multi-Armed Bandit Algorithms
-This repository provides a reference implementation of **FairLink** framework as described in [1].
+**FairLink** is a multi-armed bandit based framework that predicts new edges that are both accurate and well-behaved with respect to a fairness property of choice. This repository provides a reference implementation of **FairLink** framework as described in [1].
 
-## How to use:
+## Getting Started
 
-The file ```main.py``` contains the example code to use FairLink. FairLink expects as input the protected feature value(community membership), training graph, and negative/positive link examples. The input files for Bowdoin College facebook friendship network and Pokec friendship network in two different regions can be found in ```./data/graph/``` directory in pickle binary format. 
+### Set up the Python packages version 
 
+The Python packages version information is provided in ```requirements.txt``` file. You can execute the following command from the project home directory.
+```shell-script
+pip install -r requirements.txt
+```
 
-To run the algorithm on Pokec friendship network in Žilinský kraj Bytča, execute the following command from the project home directory:
+### Input data
+
+FairLink expects as input the protected feature value(community membership) ```communities```, training graph ```G```, and negative/positive link examples ```examples```. 
+```shell-script
+data = {'communities': [{1, 2, 2053, 5, ...}, {0, 3, 4, 6, ...}], 
+        'G': <networkx.classes.graph.Graph object at 0x7f84696751c0>, 
+        'examples': array([[2551, 2840,    0],
+                           [2556,  167,    1],
+                           ...,
+                           [2412,   72,    1],
+                           [1792, 1733,    1]])}
+```
+The input files for Bowdoin College facebook friendship network and Pokec friendship network in two different regions can be found in ```./data/graph/``` directory in pickle binary format. 
+
+### Run Examples
+
+The file ```main.py``` contains the example code to use FairLink. To run the FairLink algorithm on Pokec friendship network in Žilinský kraj Bytča, execute the following command from the project home directory:
 ```shell-script
 python main.py
 ```
@@ -65,9 +85,9 @@ optional arguments:
   --file FILE
 ```
 
-The Python libraries version information is provided in ```requirements.txt``` file.
-```shell-script
-pip install -r requirements.txt
-```
-### Refrence
+
+### Acknowledgements
+Thanks the contribution of [FLIP](https://github.com/farzmas/FLIP) where I learned a lot coding style from it. :)
+
+### Reference
 [1] **Fair Link Prediction with Multi-Armed Bandit Algorithms** Wang W, Soundarajan S, in Association for the 15th ACM Web Science Conference (WebSci), 2023.
